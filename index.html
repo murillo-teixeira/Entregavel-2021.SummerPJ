@@ -1,0 +1,164 @@
+<!doctype html>
+
+<!-- Página feita como Entregável para o PS do Summer da PJ-->
+<!-- Autoria de: Murillo Teixeira -->
+
+<!-- De forma intencional, não usei frameworks.
+Como essa é a minha primeira vez usando CSS e HTML,
+entendi que aprenderia mais se fizesse todas as classes. -->
+
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8" />
+        <title>Juninho Cápsulas</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/x-icon" href="images/logo-icone.svg">
+        <link rel="preconnect" href="https://fonts.gstatic.com" >
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Raleway:wght@400;700&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href = "css/all.css" >
+        <link rel="stylesheet" type="text/css" href = "css/style.css" >
+    </head>
+    <body>
+        <!-- Wrapper do Header -->
+        <div id="header-wrapper">
+            <div id="header" class="container padding bar ">
+                <!-- Logo para telas grandes -->
+                <div id="logo" class="bar-item">
+                    <a href="#"><img src="images/logo.svg" alt="logo" height="100px"/></a>
+                </div>
+                <!-- Logo para telas pequenas -->
+                <div id="logo-collapsed" class="bar-item">
+                    <a href="#"><img src="images/logo-collapsed.svg" alt="logo-collapsed" height="45px"/></a>
+                </div>
+                <!-- Menu para telas grandes -->
+                <div id="menu" class="float-right bar-item">
+                    <a href="#" class="theme-menu-button">Início</a>
+                    <a href="#products" class="theme-menu-button" >Produtos</a>
+                    <a href="#about"  class="theme-menu-button">Sobre</a>
+                </div>
+                <!-- Menu para telas pequenas -->
+                <div id="menu-collapsed" class="float-right bar-item">
+                    <a href="#" class="theme-menu-button"></a>
+                    <!-- Dropdown do menu de telas pequenas -->
+                    <a onclick="dropDown()" class="theme-menu-button"><i class="fas fa-bars" style="font-size: 20px;"></i></a>
+                    <div id="dropdown-content" class="dropdown-content bar-block">
+                      <a href="#" class="bar-item theme-menu-dropdown ">Início</a>
+                      <a href="#products" class="bar-item theme-menu-dropdown">Produtos</a>
+                      <a href="#about" class="bar-item theme-menu-dropdown">Sobre</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner do site -->
+        <div id="banner">
+        </div>
+
+
+        <div id="products-wrapper" class="container">
+            <!-- Âncora responsável pelo offset necessário devido ao header fixo -->
+            <div class="anchor">
+                <a name="products"></a>
+            </div>
+            <!-- Título da seção -->
+            <h2 class="align-center padding-vertical">Nossos produtos</h2>            
+            
+            <div class="align-center padding" >
+                <div class="padding"><input id="filter-input" onkeyup="filterProducts()" type="text" placeholder="Filtre as cápsulas pelo nome..."></div>
+                <div class="row title-filter-button-row"><p> Quais tipos de café te interessam?</p></div>
+                <div class="row padding" id="intensity-options">
+                    <div class="tooltip">
+                        <button class="filter-button" onclick="addCheckedTag(this);filterProducts()">Delicado</button>
+                        <span class="tooltiptext">Intensidades de 1 a 4</span>
+                    </div>
+                    <div class="tooltip">
+                        <button class="filter-button" onclick="addCheckedTag(this);filterProducts()">Equilibrado</button>
+                        <span class="tooltiptext">Intensidades de 5 a 7</span>
+                    </div>
+                    <div class="tooltip">
+                        <button class="filter-button" onclick="addCheckedTag(this);filterProducts()">Intenso</button>
+                        <span class="tooltiptext">Intensidades de 8 a 13</span>
+                    </div>
+                </div>
+                <div id="indicator-filter-return" class="row padding-vertical"><h4>Não foi possível encontrar uma <br> cápsula com essas restrições :(</h4></div>
+            </div>
+            
+            <div id="products-content" class="padding-vertical-big">
+                <!-- Aqui serão inseridos os produtos via HTTP request -->
+                <!-- Feito de forma a suportar um número arbitrário de cápsulas -->
+            </div>
+
+            <h4 id="invite-to-buy" class="row align-center padding-vertical">Se interessou por alguma cápsula? <br> Fale conosco pelos contatos abaixo!</h4>
+        </div>
+
+<!-- Wrapper para a seção de contatos -->
+    <div id="about-wrapper">
+        <!-- Âncora responsável pelo offset necessário pela presença do header fixo -->
+        <div class="anchor">
+            <a name="about"></a>
+        </div>
+
+        <!-- Conteúdo da seção Sobre -->
+        <div id="about-content">
+            <div class="about-item">
+                <div class="align-center standart-padding">
+                    <img src="images/logo-icone.svg" alt="logo" height="150">
+                </div>
+                <p class="align-justify"> A Juninho Cápsulas foi fundada no início 2021 e em apenas 2 dias se tornou a maior revendedora de cápsulas de café da rua! Prezamos pela qualidade dos nossos produtos acima de qualquer outro fator. Só aqui é possível encontrar cápsulas a partir de R$ 29,00!</p> 
+            </div>
+            <div class="about-item">
+                <h4 class="padding-vertical">Formas de contato:</h4>
+                <a href="https://api.whatsapp.com/send?phone=5581995158158" target="_blank">
+                    <span>
+                        <i class="fab fa-whatsapp"></i>
+                    </span>
+                    <span>(81) 99515-8158<br/></span>
+                </a>
+                <a href="tel://(11) 953437903">
+                    <span>
+                        <i class="fa fa-phone-alt"></i>
+                    </span>
+                    <span>(11) 95343-7903<br/></span>
+                </a>
+                <a href="mailto:contato@juninho.com">
+                    <span>
+                        <i class="far fa-envelope"></i>
+                    </span>
+                    <span>contato@juninho.com<br/></span>
+                </a>
+                <a href="http://facebook.com/juninhocapsulas" target="_blank">
+                    <span>
+                        <i class="fab fa-facebook-square"></i>
+                    </span>
+                    <span>facebook.com/juninhocapsulas<br/></span>
+                </a>
+                <a href="http://instagram.com/juninhocapsulas" target="_blank">
+                    <span>
+                        <i class="fab fa-instagram"></i>
+                    </span>
+                    <span>@juninhocapsulas<br/></span>
+                </a>
+            </div>
+            <div class="about-item">
+                <h4 class="padding-vertical">Outras informações:</h4>
+                <p>Funcionamos das 20h às 6h, todos os dias.</p>
+                <a href="https://www.google.com/maps/place/Poli+J%C3%BAnior/@-23.5536901,-46.732375,17z/data=!3m1!4b1!4m5!3m4!1s0x94ce56179631e1b5:0xb7c7c1a93b92ee5e!8m2!3d-23.5536901!4d-46.7301863"  target="_blank">
+                    <span >
+                        <i class="fas fa-map-marker-alt"></i>
+                    </span>
+                    <span>Av. Juninho Cápsulas, 1 -  Juninho Bairro - Juninho City/JC</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="align-center padding-vertical">
+        <p>Página feita por <a href="https://api.whatsapp.com/send?phone=5581995158158" target="_blank">Murillo Teixeira</a> para o PS Summer 2021 da PJ</p>
+        <p>Imagens adicionais sob licença CC</p>
+    </footer>
+
+</body>
+
+<script src="js/scripts.js"></script>
+
+</html>

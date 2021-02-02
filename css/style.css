@@ -1,0 +1,514 @@
+/* De forma intencional, não usei frameworks.
+Como essa é a minha primeira vez usando CSS e HTML,
+entendi que aprenderia mais se fizesse todas as classes. */
+
+/* Configurações gerais */
+
+html
+{
+    box-sizing:border-box;
+    line-height: 1.5;
+}
+
+a 
+{
+    color: inherit;
+}
+
+body
+{
+	margin: 0px;
+	padding: 0px;
+	background: #CDCAB4;
+	font-family: 'Raleway', sans-serif;
+	font-size: 11pt;
+	font-weight: 400;
+}
+
+.container
+{
+    width: 90%;
+    margin: 0px auto;
+}
+
+.padding
+{
+    padding: 8px 16px;
+}
+
+.padding-vertical
+{
+    padding-top: 16px !important;
+    padding-bottom: 16px !important
+}
+
+.padding-vertical-big
+{
+    padding-top: 32px !important;
+    padding-bottom: 32px !important
+}
+
+.float-right /* Padrão foi definido como float: left */
+{
+    float: right !important;
+}
+
+/* Responsividade geral, necessidades específicas nas devidas seções*/
+
+.row:after, .row:before
+{
+    content:"";
+    display:table;
+    clear:both;
+}
+
+@media only screen and (max-width: 860px) {
+    #banner {max-height: 200px !important;}
+    #menu {display: none !important;}
+    #logo {display: none !important;}
+    #filter-input {width: 280px !important;}
+    h2 {font-size: 34px !important;}
+    .anchor a {top: -82px !important}
+}
+
+@media only screen and (min-width: 860px) {
+    #menu-collapsed {display: none!important;}
+    #logo-collapsed {display: none!important;}
+}
+
+@media only screen and (min-width: 1400px) {
+    #logo {height: 200px;}
+}
+
+/* Âncora responsável pelo offset necessário devido ao header fixo */
+
+.anchor a 
+{
+	position: absolute;
+	top: -132px;
+  }
+  .anchor
+{
+	position: relative;
+}
+
+/* Tipografia */
+
+.align-center
+{
+    text-align: center !important;
+}
+
+.align-justify
+{
+    text-align: justify!important;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    font-family: 'Montserrat', sans-serif;
+    margin: 10px 0;
+}
+
+h1
+{
+	font-size: 61px;
+	letter-spacing: -0.5px;
+	font-weight: 300;
+}
+
+h2
+{
+	font-size: 48px;
+	letter-spacing: 0;
+	font-weight: 400;
+}
+
+h3
+{
+	font-size: 34px;
+	letter-spacing: 0.25;
+	font-weight: 400;
+}
+
+h4
+{
+	font-size: 24px;
+	letter-spacing: 0.25;
+	font-weight: 400;
+}
+
+p
+{
+	font-family: 'Raleway', sans-serif;
+	font-size: 16px;
+	letter-spacing: 0.5;
+    font-weight: 400;
+    margin: 0;
+}
+
+/* Configurações do menu */
+
+#header-wrapper
+{
+    background-color: #341b07;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+#header
+{
+    max-height: 132px;
+}
+
+.bar 
+{
+    overflow:hidden;
+}
+
+.bar .bar-item
+{
+    padding:8px 16px;
+    float:left;
+    width:auto;
+    border:none;
+    display:block;
+    outline:0;
+}
+
+.bar-block .bar-item
+{
+    width:100%;
+    display:block;
+    padding:8px 16px;
+    text-align:left;
+    border:none;
+    white-space:normal;
+    float:none;
+    outline:0;
+}
+
+#logo-collapsed, #menu-collapsed
+{
+    padding-right: 0;
+    padding-left: 0;
+}
+
+#menu
+{
+    margin-top: 50px;
+}
+
+#menu-collapsed
+{
+    position: absolute;
+    right: 10px;
+}
+
+.theme-menu-button
+{
+	display: inline-block;
+    padding: 0em 1.5em;
+    cursor: pointer;
+	text-decoration: none;
+	text-transform: uppercase;
+    color: #CDCAB4;
+    background-color:#341B07 ;
+	font-size: 15px;
+	letter-spacing: 1.25px;
+    font-weight: 600;
+    line-height: 50px;
+}
+
+.theme-menu-dropdown
+{
+    line-height: 25px;
+    float: left;
+    background-color:#CDCAB4;
+    color: #341B07;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1.25px;
+    padding: 12px 24px !important;
+}
+
+.dropdown-content {
+    display:none;
+    position:absolute;
+    right: 0;
+    box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+.dropdown-show
+{
+    display: block;
+}
+
+.theme-menu-dropdown:hover
+{
+    color: #341B07;
+    background: #E5AC23;
+}
+
+.theme-menu-button:hover
+{
+    background: #E5AC23;
+    border-radius: 4px;
+	color: #341B07;
+}
+
+/* Configurações do Banner */
+
+#banner
+{
+    height: 60vh;
+    max-height: 400px;
+    background-image: url(../images/banner.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+@media only screen and (max-width: 860px) {
+    #banner {max-height: 200px;}
+}
+
+/* Configurações da seção Produtos */
+
+#filter-input
+{
+    width: 30%;
+    max-width: 350px;
+    border: none;
+    height: 40px;
+    background-color:#BEBBAA;
+    border-radius: 5px;
+    box-shadow:0 2px 5px 0 rgba(0,0,0,0.16);
+    outline: none;
+    font-family: 'Raleway', sans-serif;
+    color: #24201d;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+#filter-input:focus
+{
+    border: 2px solid #a09e90;
+}
+
+::placeholder 
+{
+    color:#24201d;
+    opacity: 0.7;
+}
+
+#intensity-options
+{
+    line-height: 40px ;
+}
+
+.title-filter-button-row
+{
+    padding: 8px 0 0 0;
+    color: #24201d;
+    font-size: 15px;
+}
+
+.filter-button-row 
+{
+    width: 30%;
+    max-width: 350px;
+}
+
+.filter-button  
+{
+    cursor: pointer;
+    margin: 0 4px;
+    display: inline-block;
+    background-color:#afafa8;
+    color: #24201d;
+    opacity: 0.7;
+    border-radius: 5px;
+    height: 30px;
+    text-align: center;
+    width: auto;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    padding: 4px 15px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    box-shadow:0 2px 5px 0 rgba(0,0,0,0.16);
+    font-family: 'Raleway', sans-serif;
+}   
+
+.filter-button:hover
+{
+    border: 2px solid #a09e90;
+}
+
+.filter-button-checked
+{
+    background-color:#81817d;
+}
+
+#indicator-filter-return
+{
+    display:none;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+    
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 180px;
+    background-color: #24201d;
+    color: #CDCAB4;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 120%;
+    left: 50%;
+    margin-left: -90px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+#products-content
+{
+    display: grid;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    justify-content: center;
+}
+
+.products-item
+{
+    float: left;
+    margin: 0 auto;
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.1) ; 
+    border-width: 2px;
+    border-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    transition: transform .2s;
+}
+
+.products-item:hover {
+    transform: scale(1.1);
+    background: #b9b69f !important ;
+}
+
+@media only screen and (max-width: 720px) {
+    #products-content {grid-template-columns: repeat(1, 300px);}
+}
+
+@media only screen and (min-width: 720px) {
+    #products-content {grid-template-columns: repeat(2, 300px);}
+}
+@media only screen and (min-width: 1050px) {
+    #products-content {grid-template-columns: repeat(3, 300px);}
+}
+@media only screen and (min-width: 1400px) {
+    #products-content {grid-template-columns: repeat(4, 300px);}
+}
+
+.description
+{
+    height: 55px;
+    padding: 0 10%;
+}
+
+.grid-infos
+{
+    display: grid;
+    grid-template-columns: auto auto;
+
+}
+
+.grid-infos p
+{
+    margin: 5px;
+}
+
+.grid-infos p.key
+{
+    font-weight: 600;
+    text-align: left;
+    padding-left: 15%;
+}
+
+.grid-infos p.value
+{
+    text-align: right;
+    padding-right: 15%;
+}
+
+/* Configurações da seção Sobre */
+
+#about-wrapper
+{
+    padding: 50px 25px 20px;
+    background-color: #24201d;
+}
+
+#about-content
+{
+    display: grid;
+    grid-template-columns: 40% repeat(2, minmax(0, 1fr));
+    justify-content: space-evenly;
+    grid-gap: 20px;
+}
+
+.about-item
+{
+    color: #CDCAB4;
+    padding-left: 20px;
+    padding-right: 20px;
+    float:left;
+}
+
+.about-item a
+{
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 32px;
+}
+
+.about-item a:hover
+{
+    color: #E5AC23;
+}
+
+@media only screen and (max-width: 1150px) {
+    #about-content{grid-template-columns: auto;}
+}
+
+/* Configurações do Footer */
+
+footer
+{
+    background-color: #24201d;
+}
+footer p
+{
+    color: #CDCAB4;
+    line-height: 32px;
+    font-size: 14px;
+}
+footer a:hover
+{
+    color: #E5AC23;
+}
