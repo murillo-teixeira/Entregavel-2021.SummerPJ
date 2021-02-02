@@ -53,34 +53,6 @@ body
     float: right !important;
 }
 
-/* Responsividade geral, necessidades específicas nas devidas seções*/
-
-.row:after, .row:before
-{
-    content:"";
-    display:table;
-    clear:both;
-}
-
-@media only screen and (max-width: 860px) {
-    #banner {max-height: 200px !important;}
-    #menu {display: none !important;}
-    #logo {display: none !important;}
-    #filter-input {width: 280px !important;}
-    h2 {font-size: 34px !important;}
-    h4#invite-to-buy {font-size: 16px !important;}
-    .anchor a {top: -82px !important}
-}
-
-@media only screen and (min-width: 860px) {
-    #menu-collapsed {display: none!important;}
-    #logo-collapsed {display: none!important;}
-}
-
-@media only screen and (min-width: 1400px) {
-    #logo {height: 200px;}
-}
-
 /* Âncora responsável pelo offset necessário devido ao header fixo */
 
 .anchor a 
@@ -165,6 +137,42 @@ p
     max-height: 132px;
 }
 
+#logo-collapsed, #menu-collapsed
+{
+    padding-right: 0;
+    padding-left: 0;
+}
+
+#menu
+{
+    margin-top: 50px;
+}
+
+#menu-collapsed
+{
+    position: absolute;
+    right: 10px;
+}
+
+@media only screen and (max-width: 860px) {
+    #banner {max-height: 200px !important;}
+    #menu {display: none !important;}
+    #logo {display: none !important;}
+    #filter-input {width: 280px !important;}
+    h2 {font-size: 34px !important;}
+    h4#invite-to-buy {font-size: 16px !important;}
+    .anchor a {top: -82px !important}
+}
+
+@media only screen and (min-width: 860px) {
+    #menu-collapsed {display: none!important;}
+    #logo-collapsed {display: none!important;}
+}
+
+@media only screen and (min-width: 1400px) {
+    #logo {height: 200px;}
+}
+
 .bar 
 {
     overflow:hidden;
@@ -190,23 +198,6 @@ p
     white-space:normal;
     float:none;
     outline:0;
-}
-
-#logo-collapsed, #menu-collapsed
-{
-    padding-right: 0;
-    padding-left: 0;
-}
-
-#menu
-{
-    margin-top: 50px;
-}
-
-#menu-collapsed
-{
-    position: absolute;
-    right: 10px;
 }
 
 .theme-menu-button
@@ -468,9 +459,20 @@ p
 #about-content
 {
     display: grid;
-    grid-template-columns: 40% repeat(2, minmax(0, 1fr));
     justify-content: space-evenly;
     grid-gap: 20px;
+}
+
+@media only screen and (max-width: 650px) {
+    #about-content{grid-template: 'area-d' 'area-c' 'area-i';}
+}
+
+@media only screen and (min-width: 650px) {
+    #about-content{grid-template: 'area-d area-d' 'area-c area-i';}
+}
+
+@media only screen and (min-width: 1150px) {
+    #about-content{    grid-template: 'area-d area-d area-c area-i';}
 }
 
 .about-item
@@ -480,6 +482,10 @@ p
     padding-right: 20px;
     float:left;
 }
+
+#about-item-description {grid-area: area-d;}
+#about-item-contact {grid-area: area-c;}
+#about-item-info {grid-area: area-i;}
 
 .about-item a
 {
@@ -493,10 +499,6 @@ p
     color: #E5AC23;
 }
 
-@media only screen and (max-width: 1150px) {
-    #about-content{grid-template-columns: auto;}
-}
-
 /* Configurações do Footer */
 
 footer
@@ -508,6 +510,7 @@ footer p
     color: #CDCAB4;
     line-height: 32px;
     font-size: 14px;
+    margin: 0 32px;
 }
 footer a:hover
 {
