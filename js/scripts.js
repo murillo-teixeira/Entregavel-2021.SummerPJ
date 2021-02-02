@@ -1,11 +1,31 @@
-function addCheckedTag(obj) {
-    if(obj.className.indexOf("filter-button-checked") == -1) {
-        obj.className += " filter-button-checked"
-    } else {
-        obj.className = obj.className.replace(" filter-button-checked", "");
-    }
-}
+// Requisição HTTP e montagem do HTML
+fetch("https://api.polijunior.com.br/produtos")
+    .then(function(response) {
+        if(response.ok) {
+            response.json().then(function(data) {
+                let productsContent = document.getElementById("products-content");
+                for(var product of data){
+                    productsContent.innerHTML += `
+                    <div class="products-item align-center padding-vertical">
+                        <img src="${product.foto}" alt="cafe" width="120" />
+                        <h4>${product.nome}</h4>
+                        <p class="description">${product.descricao}</p>
+                        <div class="grid-infos">
+                            <p class="key">Intensidade:</p>
+                            <p class = "value">${getIndicadorDeIntensidade(product.intensidade) 
+                                                            + "  " + product.intensidade}</p>
+                            <p class="key">Preço:</p>
+                            <p class = "value">R$ ${parseFloat(product.preco).toFixed(2).replace(".", ",")}</p>
+                        </div>
+                    </div> `
+                }
+            });
+        } else {
+            console.log("Request failed");
+        }
+    });
 
+// Função responsável pelo dropDown do menu de telas pequenas
 function dropDown() {
     var x = document.getElementById("dropdown-content");
     if (x.className.indexOf("dropdown-show") == -1) { 
@@ -15,9 +35,19 @@ function dropDown() {
     }
   }
 
+// Função necessária para criar o botão de dois estados do filtro
+  function addCheckedTag(obj) {
+    if(obj.className.indexOf("filter-button-checked") == -1) {
+        obj.className += " filter-button-checked"
+    } else {
+        obj.className = obj.className.replace(" filter-button-checked", "");
+    }
+}
+
+// Função que filtra as cápsulas com base nos inputs do usuário
 function filterProducts() {
     var filterButtons = document.getElementsByClassName("filter-button");
-    var filterButtonDelicado = false; //
+    var filterButtonDelicado = false;
     var filterButtonEquilibrado = false;
     var filterButtonIntenso = false;
     var input = document.getElementById("filter-input")
@@ -38,6 +68,7 @@ function filterProducts() {
         }
     }
 
+    // Se nenhum botão estiver selecionado não acontece filtragem
     if((filterButtonDelicado || filterButtonEquilibrado || filterButtonIntenso) == false) {
         filterButtonDelicado = true;
         filterButtonEquilibrado = true;
@@ -83,65 +114,3 @@ function getIndicadorDeIntensidade(intensidade) {
     return indicadorDeIntensidade;
 }
 
-// Requisição HTTP e montagem do HTML
-var url = "https://api.polijunior.com.br/produtos";
-fetch(url).then(function(response) {
-    if(response.ok) {
-        response.json().then(function(data) {
-            let bloco = document.getElementById("products-content");
-            let nCapsulas = data.length;
-
-            for(var i = 0; i < nCapsulas;i++){
-                let divParent = document.createElement("div");
-                divParent.className += "products-item align-center padding-vertical";
-                divParent.id = "product" + i;
-
-                let img = document.createElement("img");
-                img.src = data[i].foto;
-                img.alt = "logo" + i;
-                img.width="120";
-
-                let name = document.createElement("h4");
-                name.innerHTML = data[i].nome;
-                name.className += " product-name";
-
-                let descricao = document.createElement("p");
-                descricao.classList.add("description");
-                descricao.innerHTML = data[i].descricao;
-
-                let divGridInfos = document.createElement("div");
-                divGridInfos.classList.add("grid-infos");
-                
-                let pKeyIntensidade = document.createElement("p");
-                pKeyIntensidade.classList.add("key");
-                pKeyIntensidade.innerHTML = "Intensidade:"
-
-                let pValueIntensidade = document.createElement("p");
-                pValueIntensidade.classList.add("value");
-                pValueIntensidade.innerHTML = getIndicadorDeIntensidade(data[i].intensidade) + " " +data[i].intensidade;
-                pValueIntensidade.className += " product-intensity";
-
-                let pKeyPreco = document.createElement("p");
-                pKeyPreco.classList.add("key");
-                pKeyPreco.innerHTML = "Preço:"
-
-                let pValuePreco = document.createElement("p");
-                pValuePreco.classList.add("value");
-                pValuePreco.innerHTML = "R$ " + parseFloat(data[i].preco).toFixed(2).replace(".", ",");
-
-                let div1 = bloco.appendChild(divParent);
-                div1.appendChild(img);
-                div1.appendChild(name);
-                div1.appendChild(descricao);
-
-                let div2 = div1.appendChild(divGridInfos)
-                div2.appendChild(pKeyIntensidade);
-                div2.appendChild(pValueIntensidade);
-                div2.appendChild(pKeyPreco);
-                div2.appendChild(pValuePreco);
-            }
-        });
-    } else {
-        console.log("Request failed");
-    }
-});

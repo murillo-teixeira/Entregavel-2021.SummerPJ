@@ -68,6 +68,7 @@ body
     #logo {display: none !important;}
     #filter-input {width: 280px !important;}
     h2 {font-size: 34px !important;}
+    h4#invite-to-buy {font-size: 16px !important;}
     .anchor a {top: -82px !important}
 }
 
