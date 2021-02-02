@@ -8,11 +8,11 @@ fetch("https://api.polijunior.com.br/produtos")
                     productsContent.innerHTML += `
                     <div class="products-item align-center padding-vertical">
                         <img src="${product.foto}" alt="cafe" width="120" />
-                        <h4>${product.nome}</h4>
+                        <h4 class="product-name">${product.nome}</h4>
                         <p class="description">${product.descricao}</p>
                         <div class="grid-infos">
                             <p class="key">Intensidade:</p>
-                            <p class = "value">${getIndicadorDeIntensidade(product.intensidade) 
+                            <p class = "value product-intensity">${getIndicadorDeIntensidade(product.intensidade) 
                                                             + "  " + product.intensidade}</p>
                             <p class="key">Preço:</p>
                             <p class = "value">R$ ${parseFloat(product.preco).toFixed(2).replace(".", ",")}</p>
