@@ -155,7 +155,6 @@ p
 }
 
 @media only screen and (max-width: 860px) {
-    #banner {max-height: 200px !important;}
     #menu {display: none !important;}
     #logo {display: none !important;}
     #filter-input {width: 280px !important;}
