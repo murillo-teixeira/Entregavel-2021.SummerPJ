@@ -155,7 +155,6 @@ p
 }
 
 @media only screen and (max-width: 860px) {
-    #banner {max-height: 200px !important;}
     #menu {display: none !important;}
     #logo {display: none !important;}
     #filter-input {width: 280px !important;}
@@ -167,10 +166,6 @@ p
 @media only screen and (min-width: 860px) {
     #menu-collapsed {display: none!important;}
     #logo-collapsed {display: none!important;}
-}
-
-@media only screen and (min-width: 1400px) {
-    #logo {height: 200px;}
 }
 
 .bar 
@@ -258,15 +253,17 @@ p
 #banner
 {
     height: 60vh;
-    max-height: 400px;
+    max-height: 300px;
     background-image: url(../images/banner.jpg);
     background-position: center;
     background-size: cover;
     position: relative;
+    margin-top: 138px;
 }
 
 @media only screen and (max-width: 860px) {
-    #banner {max-height: 200px;}
+    #banner {max-height:150px !important;
+                    margin-top: 83px;}
 }
 
 /* Configurações da seção Produtos */
