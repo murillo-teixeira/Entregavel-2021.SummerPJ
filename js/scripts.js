@@ -23,7 +23,8 @@ fetch("https://api.polijunior.com.br/produtos")
         } else {
             console.log("Request failed");
         }
-    });
+    }
+);
 
 // Função responsável pelo dropDown do menu de telas pequenas
 function dropDown() {
